@@ -29,7 +29,7 @@ done <<< "$DIGOUTPUT"
 # Loop through each of the record types we found
 for recordType in "${!recordTypes[@]}"; do
 
-	# Get all the record IDs for this type
+	# Get all the record IDs for this type and create an array out of them
 	recordTypeIDs=(${recordTypes[$recordType]})
 
 	# Loop through each record ID for this record type
