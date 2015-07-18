@@ -1,6 +1,15 @@
 #!/bin/bash
 
-DIGOUTPUT=$(dig +nocmd +noall +answer mountainofcode.co.uk ANY)
+args=" $@ "
+
+if [[ ! $1 = "" ]]; then
+	domainName="$1"
+else
+	echo "No domain specified"
+	exit 1
+fi
+
+DIGOUTPUT=$(dig +nocmd +noall +answer "$domainName" ANY)
 
 declare -A recordTypes
 declare -A records
