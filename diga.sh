@@ -45,6 +45,12 @@ while read -r record; do
 	regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alpha:]]+)[[:space:]]+(.+)$"
 	[[ $record =~ $regexDNSRecord ]]
 
+	# Check the record was matched
+	if [[ ${BASH_REMATCH[0]} = "" ]]; then
+		echo  -e "\e[41m Unknown record: '$record' \e[0m"
+		continue
+	fi
+
 	# Add this records full details to the records associative array
 	records[$recordID]="${BASH_REMATCH[0]}"
 
