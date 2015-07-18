@@ -10,6 +10,14 @@ declare -A recordsRelm
 declare -A recordsType
 declare -A recordsValue
 
+declare -A recordColours
+recordColours['A']="\e[34m"
+recordColours['AAAA']="\e[36m"
+recordColours['NS']="\e[95m"
+recordColours['TXT']="\e[93m"
+recordColours['SOA']="\e[32m"
+recordColours['MX']="\e[92m"
+
 recordID=0
 tableData=""
 
@@ -51,6 +59,10 @@ for recordType in "${!recordTypes[@]}"; do
 
 	# Loop through each record ID for this record type
 	for thisRecordID in "${recordTypeIDs[@]}"; do
-		echo -e "${recordsDomain[$thisRecordID]}\033[30G${recordsTTL[$thisRecordID]}\033[40G${recordsType[$thisRecordID]}\033[53G${recordsValue[$thisRecordID]}"
+
+		# Determine the colour this record should be
+		recordColour="${recordColours[${recordsType[$thisRecordID]}]}"
+
+		echo -e "$recordColour${recordsDomain[$thisRecordID]}\033[30G${recordsTTL[$thisRecordID]}\033[40G${recordsType[$thisRecordID]}\033[53G${recordsValue[$thisRecordID]}\e[0m"
 	done
 done
