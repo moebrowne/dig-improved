@@ -39,8 +39,9 @@ recordColours['CNAME']="\e[94m"
 recordID=0
 tableData=""
 
+# Check some records were returned
 if [[ $DIGOUTPUT = "" ]]; then
-
+	# Tell the user nothing was found
 	if [[ $searchRecordType = "ANY" ]]; then
 		echo "No DNS records were found for $domainName"
 	else
