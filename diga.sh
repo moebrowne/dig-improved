@@ -39,6 +39,10 @@ while read -r record; do
 
 done <<< "$DIGOUTPUT"
 
+
+# Output the table headers
+echo -e "Domain\033[30GTTL\033[40GType\033[53GValue"
+
 # Loop through each of the record types we found
 for recordType in "${!recordTypes[@]}"; do
 
@@ -47,6 +51,6 @@ for recordType in "${!recordTypes[@]}"; do
 
 	# Loop through each record ID for this record type
 	for thisRecordID in "${recordTypeIDs[@]}"; do
-		echo "${records[$thisRecordID]}"
+		echo -e "${recordsDomain[$thisRecordID]}\033[30G${recordsTTL[$thisRecordID]}\033[40G${recordsType[$thisRecordID]}\033[53G${recordsValue[$thisRecordID]}"
 	done
 done
