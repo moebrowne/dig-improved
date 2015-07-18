@@ -45,7 +45,7 @@ if [[ $DIGOUTPUT = "" ]]; then
 	if [[ $searchRecordType = "ANY" ]]; then
 		echo "No DNS records were found for $domainName"
 	else
-		echo "No $searchRecordType DNS records were found for $domainName"
+		echo "No $searchRecordType records were found for $domainName"
 	fi
 	exit 0
 fi
