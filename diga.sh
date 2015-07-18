@@ -4,6 +4,11 @@ DIGOUTPUT=$(dig +nocmd +noall +answer mountainofcode.co.uk ANY)
 
 declare -A recordTypes
 declare -A records
+declare -A recordsDomain
+declare -A recordsTTL
+declare -A recordsRelm
+declare -A recordsType
+declare -A recordsValue
 
 recordID=0
 tableData=""
@@ -17,6 +22,12 @@ while read -r record; do
 
 	# Add this records full details to the records associative array
 	records[$recordID]="${BASH_REMATCH[0]}"
+
+	recordsDomain[$recordID]="${BASH_REMATCH[1]}"
+	recordsTTL[$recordID]="${BASH_REMATCH[2]}"
+	recordsRelm[$recordID]="${BASH_REMATCH[3]}"
+	recordsType[$recordID]="${BASH_REMATCH[4]}"
+	recordsValue[$recordID]="${BASH_REMATCH[5]}"
 
 	# Add this records ID to the record types associative array
 	recordTypes["${BASH_REMATCH[4]}"]+="$recordID "
