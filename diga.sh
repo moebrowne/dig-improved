@@ -33,7 +33,7 @@ recordColours['AAAA']="\e[36m"
 recordColours['NS']="\e[95m"
 recordColours['TXT']="\e[93m"
 recordColours['SOA']="\e[32m"
-recordColours['MX']="\e[92m"
+recordColours['MX']="\e[91m"
 
 recordID=0
 tableData=""
