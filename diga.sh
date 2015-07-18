@@ -42,7 +42,7 @@ tableData=""
 while read -r record; do
 
 	# Match this record using REGEX
-	regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]([0-9]+)[[:space:]](IN)[[:space:]]([[:alpha:]]+)[[:space:]](.+)$"
+	regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alpha:]]+)[[:space:]]+(.+)$"
 	[[ $record =~ $regexDNSRecord ]]
 
 	# Add this records full details to the records associative array
