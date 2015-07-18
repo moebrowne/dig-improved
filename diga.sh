@@ -9,7 +9,15 @@ else
 	exit 1
 fi
 
-DIGOUTPUT=$(dig +nocmd +noall +answer "$domainName" ANY)
+regexArgRecordType=' -(-record|r) ([^ ]+) '
+[[ $args =~ $regexArgRecordType ]]
+if [ "${BASH_REMATCH[2]}" != "" ]; then
+	searchRecordType="${BASH_REMATCH[2]}"
+else
+	searchRecordType="ANY"
+fi
+
+DIGOUTPUT=$(dig +nocmd +noall +answer "$domainName" "$searchRecordType")
 
 declare -A recordTypes
 declare -A records
