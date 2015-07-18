@@ -2,10 +2,6 @@
 
 DIGOUTPUT=$(dig +nocmd +noall +answer mountainofcode.co.uk ANY)
 
-echo "$DIGOUTPUT"
-
-echo "- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - "
-
 declare -A recordTypes
 declare -A records
 
