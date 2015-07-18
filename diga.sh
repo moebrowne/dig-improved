@@ -23,6 +23,8 @@ while read -r record; do
 	# Add this records full details to the records associative array
 	records[$recordID]="${BASH_REMATCH[0]}"
 
+	# Add all this records details to associative arrays
+	# Really wish BASH supported multi-dimensional arrays...
 	recordsDomain[$recordID]="${BASH_REMATCH[1]}"
 	recordsTTL[$recordID]="${BASH_REMATCH[2]}"
 	recordsRelm[$recordID]="${BASH_REMATCH[3]}"
