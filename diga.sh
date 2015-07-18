@@ -50,6 +50,16 @@ if [[ $DIGOUTPUT = "" ]]; then
 	exit 0
 fi
 
+# Count the number of records found
+recordCount=$(echo "$DIGOUTPUT" | wc -l)
+
+# Tell the user what we found
+if [[ $searchRecordType = "ANY" ]]; then
+	echo "Found $recordCount DNS records for $domainName"
+else
+	echo "Found $recordCount $searchRecordType records for $domainName"
+fi
+
 # Output the table headers
 echo -e "Type\033[14GTTL\033[25GValue"
 
