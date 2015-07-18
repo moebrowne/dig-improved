@@ -39,13 +39,13 @@ recordColours['CNAME']="\e[94m"
 recordID=0
 tableData=""
 
-# Output the table headers
-echo -e "Domain\033[30GTTL\033[40GType\033[53GValue"
-
 if [[ $DIGOUTPUT = "" ]]; then
 	echo "No DNS records found for $domainName"
 	exit 0
 fi
+
+# Output the table headers
+echo -e "Domain\033[30GTTL\033[40GType\033[53GValue"
 
 # Loop through each of the records returned from dig
 while read -r record; do
