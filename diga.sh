@@ -51,7 +51,7 @@ if [[ $DIGOUTPUT = "" ]]; then
 fi
 
 # Output the table headers
-echo -e "Type\033[40GTTL\033[53GValue"
+echo -e "Type\033[14GTTL\033[25GValue"
 
 # Loop through each of the records returned from dig
 while read -r record; do
@@ -97,6 +97,6 @@ for recordType in "${!recordTypes[@]}"; do
 		# Determine the colour this record should be
 		recordColour="${recordColours[${recordsType[$thisRecordID]}]}"
 
-		echo -e "$recordColour${recordsType[$thisRecordID]}\033[40G${recordsTTL[$thisRecordID]}\033[53G${recordsValue[$thisRecordID]}\e[0m"
+		echo -e "$recordColour${recordsType[$thisRecordID]}\033[14G${recordsTTL[$thisRecordID]}\033[25G${recordsValue[$thisRecordID]}\e[0m"
 	done
 done
