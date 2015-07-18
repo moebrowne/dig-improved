@@ -34,6 +34,7 @@ recordColours['NS']="\e[95m"
 recordColours['TXT']="\e[93m"
 recordColours['SOA']="\e[32m"
 recordColours['MX']="\e[91m"
+recordColours['CNAME']="\e[94m"
 
 recordID=0
 tableData=""
