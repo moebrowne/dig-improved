@@ -40,7 +40,12 @@ recordID=0
 tableData=""
 
 if [[ $DIGOUTPUT = "" ]]; then
-	echo "No DNS records found for $domainName"
+
+	if [[ $searchRecordType = "ANY" ]]; then
+		echo "No DNS records were found for $domainName"
+	else
+		echo "No $searchRecordType DNS records were found for $domainName"
+	fi
 	exit 0
 fi
 
