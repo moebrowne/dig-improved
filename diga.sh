@@ -34,6 +34,6 @@ for recordType in "${!recordTypes[@]}"; do
 
 	# Loop through each record ID for this record type
 	for thisRecordID in "${recordTypeIDs[@]}"; do
-		tableData="${records[$thisRecordID]}"
+		echo "${records[$thisRecordID]}"
 	done
 done
