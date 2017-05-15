@@ -39,6 +39,9 @@ recordColours['CNAME']="\e[94m"
 recordID=0
 tableData=""
 
+#                 FQDN                         TTL                  IN             RECORD TYPE               VALUE
+regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alnum:]]+)[[:space:]]+(.+)$"
+
 # Check some records were returned
 if [[ $DIGOUTPUT = "" ]]; then
 	# Tell the user nothing was found
@@ -72,7 +75,6 @@ while read -r record; do
     fi
 
 	# Match this record using REGEX
-	regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alnum:]]+)[[:space:]]+(.+)$"
 	[[ $record =~ $regexDNSRecord ]]
 
 	# Check the record was matched
