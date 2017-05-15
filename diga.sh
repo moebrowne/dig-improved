@@ -17,7 +17,7 @@ else
 	searchRecordType="ANY"
 fi
 
-DIGOUTPUT=$(dig +nocmd +noall +answer "$domainName" "$searchRecordType")
+DIGOUTPUT=$(dig +nocmd +noall +answer "$domainName" "$searchRecordType" | grep -E '^[^;;]{2}')
 
 declare -A recordTypes
 declare -A records
@@ -38,6 +38,9 @@ recordColours['CNAME']="\e[94m"
 
 recordID=0
 tableData=""
+
+#                 FQDN                      TTL                  IN             RECORD TYPE               VALUE
+regexDNSRecord="^([^[:space:]]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alnum:]]+)[[:space:]]+(.+)$"
 
 # Check some records were returned
 if [[ $DIGOUTPUT = "" ]]; then
@@ -67,7 +70,6 @@ echo -e "Type\033[14GTTL\033[25GValue"
 while read -r record; do
 
 	# Match this record using REGEX
-	regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alnum:]]+)[[:space:]]+(.+)$"
 	[[ $record =~ $regexDNSRecord ]]
 
 	# Check the record was matched
