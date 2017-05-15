@@ -66,6 +66,11 @@ echo -e "Type\033[14GTTL\033[25GValue"
 # Loop through each of the records returned from dig
 while read -r record; do
 
+    # Check if this line is a comment
+    if [[ ${record:0:2} == ';;' ]]; then
+        continue
+    fi
+
 	# Match this record using REGEX
 	regexDNSRecord="^([[:alnum:]\-\.]+)[[:space:]]+([0-9]+)[[:space:]]+(IN)[[:space:]]+([[:alnum:]]+)[[:space:]]+(.+)$"
 	[[ $record =~ $regexDNSRecord ]]
