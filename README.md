@@ -2,6 +2,8 @@
 
 This script takes the output from `dig` and colourises and sorts it to make it easier to read
 
+![Example output showing DNS records for amazon.co.uk](dig-improved.png)
+
 ## Example
 
 Return all DNS records for exampledomain.co.uk:
