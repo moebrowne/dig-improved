@@ -17,6 +17,14 @@ else
 	searchRecordType="ANY"
 fi
 
+regexArgNameServer=' -(-name-server|n) ([^ ]+) '
+[[ $args =~ $regexArgNameServer ]]
+if [ "${BASH_REMATCH[2]}" != "" ]; then
+	nameServer="@${BASH_REMATCH[2]}"
+else
+	nameServer=""
+fi
+
 DIGOUTPUT=$(dig +nocmd +noall +answer "$domainName" "$searchRecordType" | grep -E '^[^;;]{2}')
 
 declare -A recordTypes
