@@ -16,7 +16,6 @@ Return just A records for exampledomain.co.uk:
 
 Return all DNS records for exampledomain.co.uk as reported by the 1.1.1.1 nameserver:
 
-    ./diga.sh exampledomain.co.uk --name-server 1.1.1.1
     ./diga.sh exampledomain.co.uk -n 1.1.1.1
 
 ## Parameters
@@ -24,4 +23,5 @@ Return all DNS records for exampledomain.co.uk as reported by the 1.1.1.1 namese
 The following optional parameters are available
 The parameter defaults are in the []:
 
-    -r|--record	The record type to look for [ANY]
+    -r|--record         The record type to look for [ANY]
+    -n|--name-server	The nameserver to query [system NS]
